@@ -1,7 +1,4 @@
 // ignore_for_file: prefer_const_constructors
-
-import 'dart:ui';
-
 import 'package:consumo/login/widgets/formlogin.dart';
 import 'package:consumo/login/widgets/formregister.dart';
 import 'package:consumo/themes/customtheme.dart';

@@ -16,10 +16,25 @@ class Home extends StatefulWidget {
   _HomeState createState() => _HomeState();
 }
 
-class _HomeState extends State<Home> {
+class _HomeState extends State<Home> with TickerProviderStateMixin {
   late String _nome = "";
   int _currentIdx = 0;
   List<Widget> telas = [Profile(), Preferences(), HomeContent()];
+
+  late AnimationController _addController;
+
+  @override
+  void initState() {
+    _addController =
+        AnimationController(vsync: this, duration: Duration(milliseconds: 100));
+    super.initState();
+  }
+
+  @override
+  void dispose() {
+    _addController.dispose();
+    super.dispose();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -28,7 +43,8 @@ class _HomeState extends State<Home> {
         body: telas[_currentIdx],
         floatingActionButtonLocation: FloatingActionButtonLocation.endFloat,
         floatingActionButton: FloatingActionButton.extended(
-            onPressed: () => showDialog(context: context, builder: (context) => AddDialog()),
+            onPressed: () =>
+                showDialog(context: context, builder: (_) => AddDialog(AController: _addController)),
             icon: Icon(Icons.add),
             label: Text("Add. Sensor")),
         bottomNavigationBar: BottomNavigationBar(
