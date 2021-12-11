@@ -10,7 +10,7 @@ class AppRoute {
       case "/login":
         return MaterialPageRoute(builder: (_) => const Login());
       case "/home":
-        return MaterialPageRoute(builder: (_) => const Home());
+        return MaterialPageRoute(builder: (_) => Home(userDados: settings.arguments));
       default:
         return MaterialPageRoute(builder: (_) => const Login());
     }

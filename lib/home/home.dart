@@ -3,36 +3,32 @@
 import 'package:consumo/home/homecontent.dart';
 import 'package:consumo/home/preferences.dart';
 import 'package:consumo/home/profile.dart';
-import 'package:consumo/utils/firestore.dart';
+import 'package:consumo/home/widgets/adddialog.dart';
 import 'package:flutter/material.dart';
 
 class Home extends StatefulWidget {
-  const Home({Key? key}) : super(key: key);
+  final Object? userDados;
+  final Map<String, dynamic> userDadosMap;
+  const Home({Key? key, required this.userDados})
+      : userDadosMap = userDados as Map<String, dynamic>,
+        super(key: key);
   @override
   _HomeState createState() => _HomeState();
 }
 
 class _HomeState extends State<Home> {
   late String _nome = "";
-  late Map<String, dynamic> userDados;
   int _currentIdx = 0;
   List<Widget> telas = [Profile(), Preferences(), HomeContent()];
 
   @override
   Widget build(BuildContext context) {
-    Firestore.userContent().then((response) {
-      userDados = response.data() as Map<String, dynamic>;
-      setState(() {
-        _nome = userDados['nome'];
-      });
-    });
-
     return Scaffold(
         appBar: AppBar(title: Text("Olá ${_nome},")),
         body: telas[_currentIdx],
         floatingActionButtonLocation: FloatingActionButtonLocation.endFloat,
         floatingActionButton: FloatingActionButton.extended(
-            onPressed: () {},
+            onPressed: () => showDialog(context: context, builder: (context) => AddDialog()),
             icon: Icon(Icons.add),
             label: Text("Add. Sensor")),
         bottomNavigationBar: BottomNavigationBar(

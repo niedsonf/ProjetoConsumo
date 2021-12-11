@@ -2,6 +2,7 @@
 
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:consumo/model/appuser.dart';
+import 'package:consumo/utils/firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
@@ -44,10 +45,11 @@ class Auth {
     FirebaseAuth auth = FirebaseAuth.instance;
     auth
         .signInWithEmailAndPassword(email: rUser.email, password: rUser.senha)
-        .then((firebaseUser) => Navigator.pushNamedAndRemoveUntil(
-            context, "/home", (route) => false))
-        .catchError((e) => ScaffoldMessenger.of(context)
+        .then((firebaseUser) {
+      Firestore.userContent().then((response) => Navigator.pushNamedAndRemoveUntil(context, "/home", (route) => false, arguments: response.data()));
+      
+    }).catchError((e) => ScaffoldMessenger.of(context)
             .showSnackBar(customSnackBar("Falha no login")));
-    ScaffoldMessenger.of(context).showSnackBar(customSnackBar("Processando"));
+    //ScaffoldMessenger.of(context).showSnackBar(customSnackBar("Processando"));
   }
 }
