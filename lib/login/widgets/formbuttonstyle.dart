@@ -19,6 +19,11 @@ class _FormButtonStyleState extends State<FormButtonStyle> {
       height: 45,
       alignment: Alignment.center,
       decoration: const BoxDecoration(
+          boxShadow: [
+            BoxShadow(
+              offset: Offset(2, 2),
+                color: Colors.black, blurRadius: 2, spreadRadius: 1)
+          ],
           gradient:
               LinearGradient(colors: [Color(0xFF8880FF), Color(0xFFBBB8E6)]),
           borderRadius: BorderRadius.all(Radius.circular(14))),

@@ -16,7 +16,8 @@ class LabelForm extends StatelessWidget {
           color: Color(0xFF1B1766),
           boxShadow: [
             BoxShadow(
-                color: Color(0xFF1B1766), blurRadius: 4, spreadRadius: 1)
+              offset: Offset(2, 2),
+                color: Colors.black, blurRadius: 2, spreadRadius: 1)
           ]),
       child: form,
     );

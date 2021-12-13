@@ -26,7 +26,7 @@ class _HomeState extends State<Home> with TickerProviderStateMixin {
   @override
   void initState() {
     _addController =
-        AnimationController(vsync: this, duration: Duration(milliseconds: 100));
+        AnimationController(vsync: this, duration: Duration(milliseconds: 500));
     super.initState();
   }
 
@@ -41,6 +41,10 @@ class _HomeState extends State<Home> with TickerProviderStateMixin {
     return Scaffold(
         appBar: AppBar(title: Text("Olá ${_nome},")),
         body: telas[_currentIdx],
+
+
+
+
         floatingActionButtonLocation: FloatingActionButtonLocation.endFloat,
         floatingActionButton: FloatingActionButton.extended(
             onPressed: () =>

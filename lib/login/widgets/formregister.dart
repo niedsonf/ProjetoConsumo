@@ -62,6 +62,13 @@ class _RegisterFormState extends State<RegisterForm> {
                           height: 45,
                           alignment: Alignment.center,
                           decoration: const BoxDecoration(
+                              boxShadow: [
+                                BoxShadow(
+                                    offset: Offset(2, 2),
+                                    color: Colors.black,
+                                    blurRadius: 2,
+                                    spreadRadius: 1)
+                              ],
                               gradient: LinearGradient(colors: [
                                 Color(0xFF8880FF),
                                 Color(0xFFBBB8E6)
@@ -74,8 +81,11 @@ class _RegisterFormState extends State<RegisterForm> {
                     InkWell(
                       onTap: () {
                         Auth.cadastrar(
-                          context: context, rUser: AppUser(nome: _nome.text, email: _email.text, senha: _senha.text)
-                        );
+                            context: context,
+                            rUser: AppUser(
+                                nome: _nome.text,
+                                email: _email.text,
+                                senha: _senha.text));
                       },
                       child: FormButtonStyle(
                           content: Text("Cadastrar",

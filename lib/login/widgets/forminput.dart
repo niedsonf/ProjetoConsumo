@@ -5,6 +5,7 @@ class FormInput extends StatefulWidget {
   final String name;
   final Icon icon;
   final bool isPass;
+
   const FormInput(
       {Key? key,
       required this.controller,

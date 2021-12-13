@@ -106,3 +106,7 @@ web/icons/Icon-maskable-192.png
 web/icons/Icon-512.png
 web/favicon.png
 pubspec.lock
+.dart_tool/build_resolvers/sdk.sum
+.dart_tool/build_resolvers/sdk.sum.deps
+.dart_tool/pub/bin/build_runner/build_runner.dart-2.14.4.snapshot
+.dart_tool/pub/incremental/build_runner/build_runner.dart.incremental.dill
